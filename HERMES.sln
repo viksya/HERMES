@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HermesConsole", "HermesConsole\HermesConsole.csproj", "{1C765F14-5A24-47E5-93A8-073DCF7D5E42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HermesConsole", "HermesConsole\HermesConsole.csproj", "{1C765F14-5A24-47E5-93A8-073DCF7D5E42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HermesLogic", "HermesLogic\HermesLogic.csproj", "{3676A8E6-0532-4660-BD06-4BF104747A19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HermesWeb", "HermesWeb\HermesWeb.csproj", "{3E426521-4C0A-4CF2-8563-D30621290686}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HermesWeb", "HermesWeb\HermesWeb.csproj", "{3E426521-4C0A-4CF2-8563-D30621290686}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HermesLogic", "HermesLogic\HermesLogic.csproj", "{9838ABE0-71AE-4DEE-B9E0-5ED41858714F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{1C765F14-5A24-47E5-93A8-073DCF7D5E42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C765F14-5A24-47E5-93A8-073DCF7D5E42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C765F14-5A24-47E5-93A8-073DCF7D5E42}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3676A8E6-0532-4660-BD06-4BF104747A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3676A8E6-0532-4660-BD06-4BF104747A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3676A8E6-0532-4660-BD06-4BF104747A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3676A8E6-0532-4660-BD06-4BF104747A19}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3E426521-4C0A-4CF2-8563-D30621290686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3E426521-4C0A-4CF2-8563-D30621290686}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E426521-4C0A-4CF2-8563-D30621290686}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E426521-4C0A-4CF2-8563-D30621290686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9838ABE0-71AE-4DEE-B9E0-5ED41858714F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9838ABE0-71AE-4DEE-B9E0-5ED41858714F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9838ABE0-71AE-4DEE-B9E0-5ED41858714F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9838ABE0-71AE-4DEE-B9E0-5ED41858714F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
