@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace HermesConsole
+namespace HermesLogic
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello HERMES!!");
+            Console.WriteLine("Hello World!");
         }
     }
 }
