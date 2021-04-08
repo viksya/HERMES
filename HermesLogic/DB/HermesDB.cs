@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace HermesLogic.DB
 {
-    public partial class HermesDatabase : DbContext
+    public partial class HermesDB : DbContext
     {
-        public HermesDatabase()
+        public HermesDB()
         {
         }
 
-        public HermesDatabase(DbContextOptions<HermesDatabase> options)
+        public HermesDB(DbContextOptions<HermesDB> options)
             : base(options)
         {
         }
@@ -26,7 +26,7 @@ namespace HermesLogic.DB
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(" Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\IRINA\\Documents\\HermesDB.mdf;Integrated Security=True;Connect Timeout=30");
+                optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\victo\\source\\repos\\HERMES\\HermesDB.mdf;Integrated Security=True;Connect Timeout=30");
             }
         }
 
