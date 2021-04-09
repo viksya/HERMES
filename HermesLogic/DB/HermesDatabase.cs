@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace HermesLogic.DB
 {
-    public partial class HermesDB : DbContext
+    public partial class HermesDatabase : DbContext
     {
-        public HermesDB()
+        public HermesDatabase()
         {
         }
 
-        public HermesDB(DbContextOptions<HermesDB> options)
+        public HermesDatabase(DbContextOptions<HermesDatabase> options)
             : base(options)
         {
         }

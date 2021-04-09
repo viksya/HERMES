@@ -11,7 +11,7 @@ namespace HermesLogic.Managers
     {
         public Users GetUser(string username, string password)
         {
-            using (var db = new HermesDB())
+            using (var db = new HermesDatabase())
             {
                 return db.Users.FirstOrDefault(u => u.Username.ToLower() == username.ToLower() && u.Password.ToLower() == password.ToLower());
             }
@@ -19,7 +19,7 @@ namespace HermesLogic.Managers
 
         public void Register(string username, string email, string password)
         {
-            using (var db = new HermesDB())
+            using (var db = new HermesDatabase())
             {
                 //Check if there isn't a user with the same username already
                 var existingUser = db.Users.FirstOrDefault(u => u.Username.ToLower() == username.ToLower());
