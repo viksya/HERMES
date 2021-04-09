@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using HermesLogic.Managers;
 using HermesLogic.DB;
 using HermesLogic;
+using System.Net.Mail;
+
 
 namespace HermesWeb.Controllers
 {
@@ -90,6 +92,31 @@ namespace HermesWeb.Controllers
                 }
             }
          
+            return View(model);
+        }
+
+        public IActionResult ForgotPassword(ForgotPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user =  loginManager.GetUserByEmail(model.Email, model.Username);
+                if (user == null)
+                {
+                    ModelState.AddModelError("validation", "Email not found!");
+                }
+
+                var password = loginManager.PasswordGenerator(); 
+            //  var callbackUrl = Url.Action("ResetPassword", "Account",
+            //new { UserId = user.Id, code = password }, protocol: Request.Url.Scheme);
+            //    UserManager.SendEmailAsync(user.Id, "Reset Password",
+            //"Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
+
+             
+
+                return View(model);
+            }
+
+          
             return View(model);
         }
         public IActionResult Privacy()
