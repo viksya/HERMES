@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HermesLogic.Managers;
 using HermesLogic.DB;
+using HermesLogic;
 
 namespace HermesWeb.Controllers
 {
@@ -51,13 +52,45 @@ namespace HermesWeb.Controllers
                 }
                 else
                 {
-                   // HttpContext.Session.SetUsername(user.Username);
+                   HttpContext.Session.SetUsername(user.Username);
 
                     return RedirectToAction("Index", "Chat");
                 }
             }
-            return View(model);
+           
+            return RedirectToAction(nameof(Index));
+        }
 
+        [HttpGet]
+        public IActionResult Register()
+        {
+            if (HttpContext.Session.isSignedIn())
+            {
+                return NotFound();
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Register(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    loginManager.Register(model.Username, model.Email, model.Password);
+
+                    //return RedirectToAction("Login");
+                    return RedirectToAction("Index", "Home");
+                }
+                catch (LogicException exception)
+                {
+                    ModelState.AddModelError("validation", exception.Message);
+                }
+            }
+         
+            return View(model);
         }
         public IActionResult Privacy()
         {
