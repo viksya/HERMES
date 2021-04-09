@@ -16,6 +16,7 @@ namespace HermesLogic.Managers
                 return db.Users.FirstOrDefault(u => u.Username.ToLower() == username.ToLower() && u.Password.ToLower() == password.ToLower());
             }
         }
+
         public Users GetUserByEmail(string username, string email)
         {
             using (var db = new HermesDatabase())
@@ -23,6 +24,8 @@ namespace HermesLogic.Managers
                 return db.Users.FirstOrDefault(e => e.Username.ToLower() == username.ToLower() && e.Email.ToLower() == email.ToLower());
             }
         }
+
+
         public void Register(string username, string email, string password)
         {
             using (var db = new HermesDatabase())
@@ -63,5 +66,6 @@ namespace HermesLogic.Managers
             return new string(Enumerable.Repeat(chars, 8)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
+
     }
 }
