@@ -15,6 +15,7 @@ namespace HermesWeb.Models
 
 
         [Display(Name = "Password")]
+        [DataType(DataType.Password)]
         [Required]
         public string Password { get; set; }
     }

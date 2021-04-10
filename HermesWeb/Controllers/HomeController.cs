@@ -119,10 +119,7 @@ namespace HermesWeb.Controllers
           
             return View(model);
         }
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+       
 
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         //public IActionResult Error()
@@ -130,37 +127,7 @@ namespace HermesWeb.Controllers
         //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         //}
 
-        [HttpGet]
-        public IActionResult Register()
-        {
-            if (HttpContext.Session.isSignedIn())
-            {
-                return NotFound();
-            }
-
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Register(RegisterModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    loginManager.Register(model.Username, model.Email, model.Password);
-
-                    //return RedirectToAction("Login");
-                    return RedirectToAction("Index", "Home");
-                }
-                catch (LogicException exception)
-                {
-                    ModelState.AddModelError("validation", exception.Message);
-                }
-            }
-
-            return View(model);
-        }
+       
 
 
 
