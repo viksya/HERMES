@@ -27,7 +27,7 @@ namespace HermesWeb.Controllers
 
         public IActionResult Index()
         {
-           
+
             return View();
         }
 
@@ -54,12 +54,12 @@ namespace HermesWeb.Controllers
                 }
                 else
                 {
-                   HttpContext.Session.SetUsername(user.Username);
+                    HttpContext.Session.SetUsername(user.Username);
 
                     return RedirectToAction("Index", "Chat");
                 }
             }
-           
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -91,35 +91,35 @@ namespace HermesWeb.Controllers
                     ModelState.AddModelError("validation", exception.Message);
                 }
             }
-         
+
             return View(model);
         }
 
-        public IActionResult ForgotPassword(ForgotPasswordModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user =  loginManager.GetUserByEmail(model.Email, model.Username);
-                if (user == null)
-                {
-                    ModelState.AddModelError("validation", "Email not found!");
-                }
+        //public IActionResult ForgotPassword(ForgotPasswordModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = loginManager.GetUserByEmail(model.Email, model.Username);
+        //        if (user == null)
+        //        {
+        //            ModelState.AddModelError("validation", "Email not found!");
+        //        }
 
-                var password = loginManager.PasswordGenerator(); 
-            //  var callbackUrl = Url.Action("ResetPassword", "Account",
-            //new { UserId = user.Id, code = password }, protocol: Request.Url.Scheme);
-            //    UserManager.SendEmailAsync(user.Id, "Reset Password",
-            //"Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
+        //        var password = loginManager.PasswordGenerator();
+        //        //  var callbackUrl = Url.Action("ResetPassword", "Account",
+        //        //new { UserId = user.Id, code = password }, protocol: Request.Url.Scheme);
+        //        //    UserManager.SendEmailAsync(user.Id, "Reset Password",
+        //        //"Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
 
-             
 
-                return View(model);
-            }
 
-          
-            return View(model);
-        }
-       
+        //        return View(model);
+        //    }
+
+
+        //    return View(model);
+        //}
+
 
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         //public IActionResult Error()
@@ -127,7 +127,7 @@ namespace HermesWeb.Controllers
         //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         //}
 
-       
+
 
 
 

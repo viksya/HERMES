@@ -19,6 +19,7 @@ namespace HermesLogic.DB
         {
         }
 
+        public virtual DbSet<ResetPasswordRequests> ResetPasswordRequests { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -32,6 +33,18 @@ namespace HermesLogic.DB
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ResetPasswordRequests>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.ResetRequestDateTime).HasColumnType("datetime");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.ResetPasswordRequests)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK__ResetPass__UserI__36B12243");
+            });
+
             modelBuilder.Entity<Users>(entity =>
             {
                 entity.Property(e => e.Email)

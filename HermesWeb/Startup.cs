@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +26,10 @@ namespace NewsWeb
             services.AddSession();
 
             services.AddControllersWithViews();
+
+
+
+                
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
