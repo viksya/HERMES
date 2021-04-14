@@ -17,13 +17,13 @@ namespace HermesLogic.Managers
             }
         }
 
-        //public Users GetUserByEmail(string username, string email)
-        //{
-        //    using (var db = new HermesDatabase())
-        //    {
-        //        return db.Users.FirstOrDefault(e => e.Username.ToLower() == username.ToLower() && e.Email.ToLower() == email.ToLower());
-        //    }
-        //}
+        public Users GetUserByEmail(string username, string email)
+        {
+            using (var db = new HermesDatabase())
+            {
+                return db.Users.FirstOrDefault(e => e.Username.ToLower() == username.ToLower() && e.Email.ToLower() == email.ToLower());
+            }
+        }
 
 
         public void Register(string username, string email, string password)
@@ -59,13 +59,26 @@ namespace HermesLogic.Managers
             }
         }
 
+        public void updatePassword(Users user, string newPassword)
+        {
+            using (var db = new HermesDatabase())
+            {
+                var record = db.Users.FirstOrDefault(t => t.Id == user.Id);
+                record.Password = newPassword;
+
+                // save changes
+                db.SaveChanges();
+            }
+        }
+
+
         private static Random random = new Random();
-        //public  string PasswordGenerator()
-        //{
-        //    const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        //    return new string(Enumerable.Repeat(chars, 8)
-        //      .Select(s => s[random.Next(s.Length)]).ToArray());
-        //}
+        public string PasswordGenerator()
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            return new string(Enumerable.Repeat(chars, 8)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
 
     }
 }

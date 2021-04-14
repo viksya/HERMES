@@ -20,7 +20,7 @@ namespace HermesLogic.Managers
 
         protected void btnResetPassword_Click(object sender, EventArgs e)
         {
-            string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+            /*string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
                 SqlCommand cmd = new SqlCommand("spResetPassword", con);
@@ -45,7 +45,7 @@ namespace HermesLogic.Managers
                         lblMessage.Text = "Username not found!";
                     }
                 }
-            }
+            }*/
         }
 
         private void SendPasswordResetEmail(string ToEmail, string UserName, string UniqueId)

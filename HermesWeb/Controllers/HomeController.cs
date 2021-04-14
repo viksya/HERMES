@@ -59,8 +59,8 @@ namespace HermesWeb.Controllers
                     return RedirectToAction("Index", "Chat");
                 }
             }
-
-            return RedirectToAction(nameof(Index));
+            return View("Index");
+            //return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
@@ -95,37 +95,65 @@ namespace HermesWeb.Controllers
             return View(model);
         }
 
-        //public IActionResult ForgotPassword(ForgotPasswordModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = loginManager.GetUserByEmail(model.Email, model.Username);
-        //        if (user == null)
-        //        {
-        //            ModelState.AddModelError("validation", "Email not found!");
-        //        }
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            if (HttpContext.Session.isSignedIn())
+            {
+                return NotFound();
+            }
 
-        //        var password = loginManager.PasswordGenerator();
-        //        //  var callbackUrl = Url.Action("ResetPassword", "Account",
-        //        //new { UserId = user.Id, code = password }, protocol: Request.Url.Scheme);
-        //        //    UserManager.SendEmailAsync(user.Id, "Reset Password",
-        //        //"Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ForgotPassword(ResetModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = loginManager.GetUserByEmail(model.Username, model.Email);
+                if (user == null)
+                {
+                    ModelState.AddModelError("validation", "Email not found!");
+                }
+
+                var password = loginManager.PasswordGenerator();
+                loginManager.updatePassword(user, password);
+
+                
+                MailMessage mailObj = new MailMessage("sgthermes@inbox.lv", user.Email, "Hermes password reset", "your new password is: " + password);
+                var client = new SmtpClient();
+                client.Credentials = new System.Net.NetworkCredential("sgthermes", "T4T?ZMy2wb");
+                client.Host = "mail.inbox.lv";
+                client.EnableSsl = true;
+                client.Port = 587;
+                client.Send(mailObj);
 
 
 
-        //        return View(model);
-        //    }
 
 
-        //    return View(model);
-        //}
+
+                //  var callbackUrl = Url.Action("ResetPassword", "Account",
+                //new { UserId = user.Id, code = password }, protocol: Request.Url.Scheme);
+                //    UserManager.SendEmailAsync(user.Id, "Reset Password",
+                //"Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
 
 
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public IActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
+
+                return View(model);
+            }
+
+
+            return View(model);
+        }
+
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
 
 
 
